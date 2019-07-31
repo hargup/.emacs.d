@@ -303,6 +303,7 @@
 
 (use-package cider
   :doc "Integration with a Clojure REPL cider"
+  :load-path "~/.emacs.d/elpa/cider"
   :ensure t
   :init
   ;; Enable minibuffer documentation
