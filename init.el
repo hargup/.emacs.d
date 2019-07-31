@@ -481,8 +481,8 @@
   ;; status change.
   (setq org-todo-keywords
         '((sequence "TODO(t/!)" "WORKING(w/!)" "PAUSED(p/!)"
-                    "WAITING(W/!)" "|" "DONE(d/!)"
-                    "CANCELLED(c/!)")))
+                    "WAITING(W@/!)" "|" "DONE(d/!)"
+                    "CANCELLED(c@/!)")))
 
   ;; Use logbook
   (setq org-log-into-drawer t)
