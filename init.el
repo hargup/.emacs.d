@@ -72,7 +72,7 @@
  mouse-yank-at-point t)
 
 ;; Set column width
-(setq-default fill-column 90)
+(setq-default fill-column 71)
 
 ;; Full path in the title bar
 (setq-default frame-title-format "Emacs (%f)")
