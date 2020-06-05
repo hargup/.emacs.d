@@ -133,6 +133,9 @@
 ;; Make the command key behave as 'meta'
 (setq mac-command-modifier 'meta)
 
+;; Make the option key behave as 'super'
+(setq mac-option-modifier 'super)
+
 (global-set-key (kbd "M-o") 'other-window)
 
 (defun focus (&optional arg var line)
@@ -179,7 +182,7 @@
  '(ido-vertical-mode t)
  '(package-selected-packages
    (quote
-    (gif-screencast undo-tree go-mode multiple-cursors git-gutter git-timemachine hippie-expand ido-completing-read+ use-package aggressive-indent counsel swiper ivy ido-vertical-mode ace-jump-mode company color-theme-monokai monokai-alt-theme cider clojure-mode color-identifiers-mode tagedit smex rainbow-delimiters queue projectile paredit magit exec-path-from-shell))))
+    (clj-refactor dumb-jump rjsx-mode yasnippet highlight-symbol ag gif-screencast undo-tree go-mode multiple-cursors git-gutter git-timemachine hippie-expand ido-completing-read+ use-package aggressive-indent counsel swiper ivy ido-vertical-mode ace-jump-mode company color-theme-monokai monokai-alt-theme cider clojure-mode color-identifiers-mode tagedit smex rainbow-delimiters queue projectile paredit magit exec-path-from-shell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -361,7 +364,8 @@
   :ensure t
   :config
   ;; Use it everywhere
-  (projectile-global-mode t))
+  (projectile-global-mode t)
+  :bind ("s-p" . projectile-command-map))
 
 (use-package rainbow-delimiters
   :doc "Colorful paranthesis matching"
@@ -421,11 +425,31 @@
   :ensure t
   :bind (("M-x" . counsel-M-x)))
 
+(use-package ag
+  :doc "Use silver searcher"
+  :ensure t)
+
+(use-package clj-refactor
+  :doc "Use clj-refactor"
+  :ensure t
+  :config
+  (cljr-add-keybindings-with-prefix "C-c C-m"))
+
+(use-package dumb-jump
+  :doc "Use dumb jump"
+  :ensure t)
+
 (use-package aggressive-indent
   :doc "Always keep everything indented"
   :ensure t
   :config
   (add-hook 'before-save-hook 'aggressive-indent-indent-defun))
+
+(use-package highlight-symbol
+  :doc "Highlight and jump to symbols"
+  :ensure t
+  :config
+  (add-hook 'cider-mode-hook 'highlight-symbol-mode))
 
 (use-package git-gutter
   :doc "Shows modified lines"
