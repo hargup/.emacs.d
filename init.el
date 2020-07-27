@@ -115,6 +115,10 @@
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
 (global-set-key (kbd "C-c i") 'imenu)
 
+(defun imenu-rescan ()
+  (interactive)
+  (imenu--menubar-select imenu--rescan-item))
+
 ;; Use 2 spaces for tabs
 (defun die-tabs ()
   (interactive)
@@ -365,6 +369,9 @@
   :config
   ;; Use it everywhere
   (projectile-global-mode t)
+  ;; NOTE, I have ignored data by M-. in the projectile's definition of
+  ;; projectile-globally-ignored-directories
+  ;; (projectile-globally-ignored-directories . ("data"))
   :bind ("s-p" . projectile-command-map))
 
 (use-package rainbow-delimiters
